@@ -1,0 +1,26 @@
+.vscode/*
+bin/*
+obj/*
+Migrations/*
+
+# dependencies
+logmonitor/node_modules
+logmonitor/.pnp
+logmonitor/.pnp.js
+
+# testing
+logmonitor/coverage
+
+# production
+logmonitor/build
+
+# misc
+logmonitor/.DS_Store
+logmonitor/.env.local
+logmonitor/.env.development.local
+logmonitor/.env.test.local
+logmonitor/.env.production.local
+
+logmonitor/npm-debug.log*
+logmonitor/yarn-debug.log*
+logmonitor/yarn-error.log*
