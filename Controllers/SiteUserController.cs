@@ -55,7 +55,7 @@ public class SiteUserController : ControllerBase
         }
         var claims = new[] {
         new Claim(JwtRegisteredClaimNames.Sub,user.Sid.ToString()),
-        new Claim("IsSiteUser",bool.FalseString),
+        new Claim("IsSiteUser",bool.TrueString),
         new Claim("Email",user.Email),
         new Claim("Name",user.Name)
        };

@@ -117,12 +117,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// app.UseCors(_allowClientsCors);
+app.UseCors(_allowClientsCors);
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-// app.useRequestLog();
+app.useRequestLog();
 
 app.MapControllers();
 

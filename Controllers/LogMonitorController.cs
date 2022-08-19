@@ -23,7 +23,18 @@ public class LogMonitorController : ControllerBase
     public async Task<IActionResult> getAllLogs()
     {
         var data = await _mongoUOW.LogsRepository.getAll();
-        return Ok(data);
+        var result = (from x in data.ToList()
+                      select new
+                      {
+                          Id = x.Id,
+                          RequestDateTime = x.RequestDateTime.ToString("dd-MMM-yyyy hh:mm:ss tt"),
+                          RequestPath = x.RequestPath,
+                          RequestType = x.RequestType,
+                          ResponseDateTime = x.ResponseDateTime.ToString("dd-MMM-yyyy hh:mm:ss tt"),
+                          ResponseStatus = x.ResponseStatus
+                      }
+         ).OrderByDescending(x => x.Id).ToList();
+        return Ok(result);
     }
     [HttpGet]
     [Route("[action]")]

@@ -35,7 +35,8 @@ class GlobalContextProvider extends React.Component<globalContextProviderProps, 
         if (token === '') {
             this.setState({ token: '', isLoggedIn: false });
         } else {
-            this.setState({ token: token, isLoggedIn: true });
+            let userDetails = JSON.parse(atob(token.split('.')[1]));
+            this.setState({ token: token, isLoggedIn: true, LoggedUser: userDetails });
         }
     }
 

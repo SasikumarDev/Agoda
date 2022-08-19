@@ -17,11 +17,13 @@ const Navbar = () => {
     if (loc.pathname === '/' && ctx?.isLoggedIn) {
         window.location.href = '/Home';
     }
-    const menuItems: Array<MenuItem> = [{
-        label: 'Logout', icon: 'pi pi-sign-out', command: () => {
-            ctx?.logOut();
-        }
-    }];
+    const menuItems: Array<MenuItem> = [
+        { label: ctx?.LoggedUser?.Email??'' },
+        {
+            label: 'Logout', icon: 'pi pi-sign-out', command: () => {
+                ctx?.logOut();
+            }
+        }];
 
     const leftContent = (
         <div className="leftWrapper">
@@ -38,6 +40,19 @@ const Navbar = () => {
         </div>
     );
 
+    const getUserName = () => {
+        var usname = '';
+        if (ctx?.isLoggedIn) {
+            let name: string = ctx.LoggedUser.Name;
+            if (name.includes(' ')) {
+                usname = name.split(' ')[0][0];
+            } else {
+                usname = `${name[0]}${name[1]}`;
+            }
+        }
+        return usname;
+    }
+
     const rightContent = (
         <div style={{ paddingRight: '0.4rem' }} >
             {
@@ -45,7 +60,7 @@ const Navbar = () => {
                     <Button label="Login" className="p-button-danger p-button-raised"></Button>
                 ) : (
                     <>
-                        <Avatar label="AU" size="normal" shape="circle" style={{ background: 'white' }} onClick={(event) => menu?.current?.toggle?.(event)} />
+                        <Avatar label={getUserName()} size="normal" shape="circle" style={{ background: 'white' }} onClick={(event) => menu?.current?.toggle?.(event)} />
                         <Menu model={menuItems} popup ref={menu} id="popup_menu" />
                     </>
                 )

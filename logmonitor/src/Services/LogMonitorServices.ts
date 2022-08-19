@@ -1,14 +1,13 @@
 // import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
-
 class LogMonitorServices {
   private baseUrl: string = "http://localhost:5110/api";
   // private navgate = useNavigate();
 
   private axiosReq = axios.create({
     headers: {
-      Authorization: `Bearer`,
+      Authorization: `Bearer ${window.localStorage.getItem('userToken')}`,
     },
   });
 
@@ -36,6 +35,9 @@ class LogMonitorServices {
     return this.axiosReq.get(`${this.baseUrl}/LogMonitor/getHomeDetails`);
   }
 
+  login(data: any) {
+    return this.axiosReq.post(`${this.baseUrl}/SiteUser/Login`,data);
+  }
 }
 
 export default new LogMonitorServices();

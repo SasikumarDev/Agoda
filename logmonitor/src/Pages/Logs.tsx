@@ -49,7 +49,11 @@ class Logs extends React.Component<LogsProps, LogsState> {
 
     render() {
         return (
-            <DataTable value={this.state.data} sortMode="single" responsiveLayout="scroll" >
+            <DataTable value={this.state.data} sortMode="single" responsiveLayout="scroll" paginator
+                paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords}" rows={15} rowsPerPageOptions={[15, 25, 50]}
+
+            >
                 <Column field="RequestType" header="Request Type" sortable></Column>
                 <Column field="RequestPath" header="Request Path" sortable></Column>
                 {/* <Column field="RequestBody" header="Request Body"></Column> */}

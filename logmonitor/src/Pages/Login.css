@@ -1,0 +1,32 @@
+.loginWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-basis: 50%;
+    background: white;
+    border-radius: 0.3rem;
+    box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 20%);
+    padding: 0.5rem;
+    min-height: 250px;
+    justify-content: center;
+}
+
+
+@media only screen and (max-width:650px) {
+    .card {
+        flex-basis: 99%;
+    }
+}
+@media only screen and (max-width:770px) and (min-width:650px) {
+    .card {
+        flex-basis: 75%;
+    }
+}
